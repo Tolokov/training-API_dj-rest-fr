@@ -1,0 +1,221 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title> Restaurants in the United States </title>
+</head>
+
+<body>
+<div class="p-3" style="background-color:#dddedf;">
+
+    <div class="container">
+        <div class="row row-cols-5 row-cols-lg-1 g-2 g-lg-3"><a href="{% url 'index' %}">
+            <img src="{% static 'images/Restaurant_img.jpg' %}" class="img-fluid rounded mx-auto d-block" alt="poster" style="min-width: 70%">
+        </a></div>
+
+        <div class="container mt-2">
+            <div class="row g-2">
+
+                <div class="col-md-4">
+                    <div class="card " style="justify-content: center; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-incognito" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205a1.032 1.032 0 0 0-.014-.058l-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5c-.62 0-1.411-.136-2.025-.267-.541-.115-1.093.2-1.239.735Zm.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a29.58 29.58 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274ZM3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Zm-1.5.5c0-.175.03-.344.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085c.055.156.085.325.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0v-1Zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5Z"/>
+                        </svg>
+                        <br>
+                        <p>total reviews : <b>{{ reviews }}</b></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="justify-content: center; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                             class="bi bi-server" viewBox="0 0 16 16">
+                            <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
+                            <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+                            <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
+                        </svg>
+                        <br> <p>total objects : <b>{{ objects }} </b></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card" style="justify-content: center; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                             class="bi bi-house-door" viewBox="0 0 16 16">
+                            <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                        </svg>
+                        <br> <p> total restaurants : <b> {{ restaurants }} </b></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container mt-2">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <div class="container">
+                        <div class="row height d-flex justify-content-center align-items-center">
+                            <form method="get" action="{% url 'search' %}">
+                                <div class="col-md-6">
+                                    <div class="form">
+                                        <i class="fa fa-search"></i>
+                                        <input name="s" type="text" class="form-control form-input" placeholder="Search anything...">
+                                        <span class="left-pan"><i class="fa fa-microphone"></i></span></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {% for num_page in paginator.page_range %}
+
+                        {% if page_obj.number == 1 and num_page == 1 %}
+                            {% if paginator.page_range|length == 1 %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+
+                            {% elif paginator.page_range|length == 2 %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ paginator.page_range|length }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span></a></li>
+                            {% endif %}
+
+                        {% elif page_obj.number == 2 and num_page == 2 %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:-1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:-1 }}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+
+                            {% if paginator.page_range|length > num_page|add:1 %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+                                <li class="page-item"><a class="page-link" href="?page={{ paginator.page_range|length }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span></a></li>
+
+                            {% elif paginator.page_range|length > num_page %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+                            {% endif %}
+
+                        {% elif page_obj.number == paginator.page_range|length|add:-1 and num_page == paginator.page_range|length|add:-1 %}
+                            <li class="page-item"><a class="page-link" href="?page=1{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:-1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:-1 }}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+
+                        {% elif page_obj.number == paginator.page_range|length and num_page == paginator.page_range|length %}
+                            <li class="page-item"><a class="page-link" href="?page=1{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:-1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:-1 }}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+
+                        {% elif page_obj.number ==  num_page %}
+                            <li class="page-item"><a class="page-link" href="?page=1{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:-1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:-1 }}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}"><b>{{ num_page }}</b></a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ num_page|add:1 }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}">{{ num_page|add:1 }}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ paginator.page_range|length }}{% if request.GET.s %}&s={{ request.GET.s }} {% else %} {% endif %}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="container mt-2">
+            <div class="accordion" id="accordionExample">
+                {% for restaurant in list_of_restaurants %}
+                    {% if forloop.counter == 1 %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+                                        aria-controls="collapse{{ forloop.counter }}">
+                                    {{ restaurant.name }} # {{ restaurant.id }}
+                                </button>
+                            </h2>
+
+                            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse show"
+                                 aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+
+                                        <div class="col-sm">
+                                            <div id="gmap" class="contact-map">
+                                                <iframe
+                                                        src="https://maps.google.com/maps?q={{ restaurant.latitude }},{{ restaurant.longitude }}&hl=es;z=14&amp;output=embed"
+                                                        height="300px" width="100%" allowfullscreen=""
+                                                ></iframe>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm">
+                                            <div>
+                                                <p><b>Name:</b> {{ restaurant.name }}</p>
+                                                <p><b>Uniq:</b> {{ restaurant.restaurant_uniq_id }}</p>
+                                                <p><b>Borough:</b> {{ restaurant.borough }}</p>
+                                                <p><b>Cuisine:</b> {{ restaurant.cuisine }}</p>
+                                                <p><b>Building:</b> {{ restaurant.building }}</p>
+                                                <p><b>Street:</b> {{ restaurant.street }}</p>
+                                                <p><b>Reviews:</b> {{ restaurant.count_reviews }}</p>
+                                                <p><b>Average grade:</b> {{ restaurant.max_score }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% else %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+                                        aria-controls="collapse{{ forloop.counter }}">
+                                    {{ restaurant.name }} # {{ restaurant.id }}
+                                </button>
+                            </h2>
+
+                            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse"
+                                 aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div id="gmap" class="contact-map">
+                                                <iframe src="https://maps.google.com/maps?q={{ restaurant.latitude }},{{ restaurant.longitude }}&hl=es;z=14&amp;output=embed"
+                                                        height="300px" width="100%" allowfullscreen=""
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div>
+                                                <p><b>Name:</b> {{ restaurant.name }}</p>
+                                                <p><b>Uniq:</b> {{ restaurant.restaurant_uniq_id }}</p>
+                                                <p><b>Borough:</b> {{ restaurant.borough }}</p>
+                                                <p><b>Cuisine:</b> {{ restaurant.cuisine }}</p>
+                                                <p><b>Building:</b> {{ restaurant.building }}</p>
+                                                <p><b>Street:</b> {{ restaurant.street }}</p>
+                                                <p><b>Reviews:</b> {{ restaurant.count_reviews }}</p>
+                                                <p><b>Average grade:</b> {{ restaurant.max_score }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

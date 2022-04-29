@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+</head>
+<body>
+  <table border="1px">
+    <caption>
+      Restaurants in the United States
+    </caption>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>restaurant_uniq_id</th>
+      <th>borough</th>
+      <th>cuisine</th>
+      <th>building</th>
+      <th>street</th>
+      <th>zipcode</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+    {% for restaurant in list_of_restaurants %}
+    <tr>
+      <th>{{ restaurant.id }}</th>
+      <th>{{ restaurant.name }}</th>
+      <th>{{ restaurant.restaurant_uniq_id }}</th>
+      <th>{{ restaurant.borough }}</th>
+      <th>{{ restaurant.cuisine }}</th>
+      <th>{{ restaurant.building }}</th>
+      <th>{{ restaurant.street }}</th>
+      <th>{{ restaurant.zipcode }}</th>
+      <th>{{ restaurant.latitude }}</th>
+      <th>{{ restaurant.longitude }}</th>
+    </tr>
+
+    {% endfor %}
+
+  <ul class="pagination">
+      {% for num_page in paginator.page_range %}
+          {% if page_obj.number == 1  %}
+              {%  if num_page == page_obj.number  %}
+                <a style="margin-left:89px;" href="?page={{ num_page|add:1 }}" ><button name="next"> NEXT </button></a>
+              {% endif %}
+          {% elif page_obj.number == paginator.page_range|length %}
+              {%  if num_page == page_obj.number  %}
+              <a href="?page={{ num_page|add:-1 }}" ><button name="prev"> PREVIOUS </button></a>
+                {% endif %}
+          {% elif num_page == page_obj.number %}
+              <a href="?page={{ num_page|add:-1 }}" ><button name="prev"> PREVIOUS </button></a>
+              <a href="?page={{ num_page|add:1 }}" ><button name="next"> NEXT </button></a>
+          {% endif %}
+      {% endfor %}
+
+  </ul>
+  </table>
+
+</body>
+</html>
